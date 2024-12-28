@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Sentiment Analysis</title>
+    </head>
+    <body>
+        <h1>Ecommerce Clothing Reviews</h1>
+        <form action="/predict" method="POST">
+            <label>Write text:</label><br>
+            <textarea name="text" rows="10" cols="40"></textarea><br>
+            <input type="submit" value="Predict">
+        </form>
+
+        {% if result is not none %}
+            <h2>Rating: {{ result }}</h2>
+            {% if result == 1 %}
+                <p>Poor</p>
+            {% elif result == 2 %}
+                <p>Below Average</p>
+            {% elif result == 3 %}
+                <p>Neutral</p>
+            {% elif result == 4 %}
+                <p>Good</p>
+            {% elif result == 5 %}
+                <p>Excellent</p>
+            {% else %}
+                <p>Unknown rating</p>
+            {% endif %}
+        {% endif %}
+    </body>
+</html>
